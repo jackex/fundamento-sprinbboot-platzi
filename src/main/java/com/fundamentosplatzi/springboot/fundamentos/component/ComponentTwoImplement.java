@@ -1,4 +1,4 @@
-package com.fundamentosplatzi.springboot.fundamentos;
+package com.fundamentosplatzi.springboot.fundamentos.component;
 
 import com.fundamentosplatzi.springboot.fundamentos.component.ComponentDependency;
 import org.springframework.stereotype.Component;
