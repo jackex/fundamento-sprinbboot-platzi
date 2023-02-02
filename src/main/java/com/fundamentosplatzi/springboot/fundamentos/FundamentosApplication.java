@@ -5,6 +5,8 @@ import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithProperties;
 import com.fundamentosplatzi.springboot.fundamentos.bean.OperacionMatematica;
 import com.fundamentosplatzi.springboot.fundamentos.component.ComponentDependency;
 import com.fundamentosplatzi.springboot.fundamentos.pojo.UserPojo;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class FundamentosApplication implements CommandLineRunner {
+
+    private Log LOGGER = LogFactory.getLog(FundamentosApplication.class);
 
 	private ComponentDependency componentDependency;
 	private MiPrimerBean miPrimerBean;
@@ -38,5 +42,12 @@ public class FundamentosApplication implements CommandLineRunner {
 		this.operacionMatematica.realizarOperacion(10);
 		System.out.println(this.myBeanWithProperties.function());
 		System.out.println(this.userPojo.getEmail() + " - " + this.userPojo.getPassword() + " - " + this.userPojo.getAge());
+        try {
+            int valor = 10 / 0;
+        }
+        catch(Exception e){
+            this.LOGGER.error("Error al intentar la operacion: " + e.getMessage());
+        }
+
 	}
 }
